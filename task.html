@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            margin: 10px;
+            border-collapse: collapse;
+        }
+
+        button {
+            padding: 8px;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="mytable">
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </table>
+    <button onclick="addrow()">Add row</button>
+    <button onclick="removerow()">Remove row</button>
+    <button onclick="addcol()">Add col</button>
+    <button onclick="removecol()">Remove col</button>
+
+    <script>
+        function addrow() {
+            let table = document.getElementById("mytable");
+            let row = table.insertRow();
+            for (let i = 0; i < table.rows[0].cells.length; i++) {
+                row.insertCell().innerHTML = "new data";
+            }
+        }
+        function removerow() {
+            let table = document.getElementById("mytable");
+            if (table.rows.length > 3) {
+                table.deleteRow(-1);
+            }
+            else {
+                alert("atleast two have must remain");
+            }
+        }
+        function addcol() {
+            let table = document.getElementById("mytable");
+            for (let row of table.rows) {
+                row.insertCell().innerHTML = "new data";
+            }
+        }
+        function removecol() {
+            let table = document.getElementById("mytable");
+            if (table.rows[0].cells.length > 2) {
+                for (let row of table.rows) {
+                    row.deleteCell(-1);
+                }
+            }
+            else {
+                alert("atleast two have must remain");
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
